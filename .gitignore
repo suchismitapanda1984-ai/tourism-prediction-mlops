@@ -1,0 +1,81 @@
+
+
+# Python cache
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+
+
+# Virtual environments
+
+.env
+.venv/
+venv/
+
+
+# MLflow
+
+mlruns/
+mlflow.db
+
+
+# Model artifacts (large files)
+
+model/
+artifacts/
+*.pkl
+*.joblib
+*.h5
+
+
+# Data (large datasets)
+
+data/raw/
+data/processed/
+
+
+# Logs
+
+logs/
+*.log
+
+
+# Archives / backups
+
+*.zip
+*.tar
+*.gz
+
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+
+# Streamlit cache
+
+.streamlit/
+
+
+# Docker / build
+
+*.dockerignore
+docker-compose.yml
+
+
+# Hugging Face / model files
+
+*.ckpt
+*.bin
+
+
+# Misc
+
+*.tmp
+*.bak

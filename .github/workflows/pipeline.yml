@@ -1,0 +1,46 @@
+name: Tourism ML Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  ml-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Setup Python
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Step 4: Run preprocessing
+      - name: Preprocessing
+        run: python tourism_project/model_building/prep.py
+
+      # Step 5: Train model
+      - name: Train model
+        run: python tourism_project/model_building/train.py
+
+      # Step 6: Evaluate model
+      - name: Evaluate model
+        run: python tourism_project/model_building/evaluate.py
+
+      # Step 7: Upload artifacts
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-files
+          path: artifacts/
